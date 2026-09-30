@@ -1,0 +1,23 @@
+Package: simulate
+Type: Package
+Title: This package is a complement for the Simulation course of the Statistics carrer. It contains all the functions developed during the course
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Pablo", "Flores",
+      email = "p_flores@espoch.edu.ec",
+      role = c("aut", "cre")
+    ),
+    person(
+    "Freddy", "Tomala",
+    email = "freddy.tomala@espoch.edu.ec",
+    role = "ctb"
+    )
+  )
+Description: This package contains functions related to the simulation of pseudorandom sequences, including simulated samples from different probability distributions.
+    It also contains the different test to prove if the saple comes from the theoretical goal distributions.
+Imports: fdth, stats
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Config/roxygen2/version: 8.1.0

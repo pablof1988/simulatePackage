@@ -1,0 +1,4 @@
+library(simulate)
+set.seed(123)
+x <- runif(100)
+uniftest(x)
