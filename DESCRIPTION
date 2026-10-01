@@ -12,6 +12,11 @@ Authors@R: c(
     "Freddy", "Tomala",
     email = "freddy.tomala@espoch.edu.ec",
     role = "ctb"
+    ),
+    person(
+    "Dina", "Pintag",
+    email = "dina.pintag@espoch.edu.ec",
+    role = "ctb"
     )
   )
 Description: This package contains functions related to the simulation of pseudorandom sequences, including simulated samples from different probability distributions.
