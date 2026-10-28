@@ -1,0 +1,50 @@
+#' Generate binomial pseudorandom numbers
+#'
+#' @description
+#' Generates pseudorandom numbers from a binomial distribution using the
+#' inverse transform method.
+#'
+#' @param n A positive integer giving the number of pseudorandom values to
+#'   generate.
+#' @param m A non-negative integer giving the number of Bernoulli trials.
+#' @param p A numeric value between 0 and 1 giving the probability of success
+#'   in each trial.
+#'
+#' @return An integer vector of length \code{n} containing pseudorandom values
+#'   in \eqn{\{0, 1, \ldots, m\}} from a binomial distribution with parameters
+#'   \code{m} and \code{p}.
+#'
+#' @details
+#' The function first evaluates the binomial probability mass function over
+#' its support and constructs the cumulative distribution function. It then
+#' generates \code{n} independent uniform pseudorandom values and maps each of
+#' them to a binomial outcome using the inverse cumulative distribution
+#' function.
+#'
+#' In other words, if \eqn{U} is uniform on \eqn{[0,1)}, the generated value is
+#' the smallest integer \eqn{x} such that
+#' \deqn{U < F(x),}
+#' where \eqn{F} is the cumulative distribution function of a
+#' \eqn{\mathrm{Binomial}(m,p)} random variable.
+#'
+#' @examples
+#' set.seed(123)
+#' x <- rbinomial(n = 10, m = 5, p = 0.3)
+#' x
+#'
+#' # The sample mean should be close to the theoretical mean m * p.
+#' set.seed(123)
+#' x <- rbinomial(n = 10000, m = 10, p = 0.4)
+#' mean(x)
+#'
+#' @seealso \code{\link[stats]{Binomial}}, \code{\link[stats]{rbinom}},
+#'   \code{\link[stats]{runif}}
+#'
+#' @export
+rbinomial <- function(n, m, p){
+  xval <- 0:m
+  prTheoretical <- dbinom(xval, size = m, prob = p)
+  Fx <- cumsum(prTheoretical)
+  u <- runif(n)
+  findInterval(u, Fx)
+}
