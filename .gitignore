@@ -1,4 +1,27 @@
-.Rproj.user
+# R y RStudio
 .Rhistory
 .RData
 .Ruserdata
+.Rproj.user/
+
+# Archivos de compilación
+*.Rcheck/
+*.tar.gz
+*.Rout
+*.Rout.fail
+Rplots.pdf
+
+# Archivos temporales
+*.tmp
+*.bak
+*~
+.Renviron
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Entornos de desarrollo
+.vscode/
+.idea/
