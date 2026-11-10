@@ -1,0 +1,49 @@
+#' Generate Random Observations from a Uniform Distribution
+#'
+#' @description
+#' Generates a random sample of size \code{n} from a continuous uniform
+#' distribution with arbitrary parameters \code{a} and \code{b},
+#' where \eqn{a < b}.
+#'
+#' @details
+#' A random variable \eqn{X \sim U(a,b)} follows a continuous uniform
+#' distribution if its probability density function is:
+#'
+#' \deqn{
+#' f_X(x) =
+#' \begin{cases}
+#' \frac{1}{b-a}, & a \le x \le b, \\
+#' 0, & \text{otherwise}.
+#' \end{cases}
+#' }
+#'
+#' The function uses the inverse transform method. Given a random
+#' variable \eqn{U \sim U(0,1)}, observations from the target
+#' distribution are obtained through the inverse CDF:
+#'
+#' \deqn{X = F^{-1}(U) = a + (b-a)U}
+#'
+#' @param n A positive integer specifying the sample size.
+#' @param a A numeric value specifying the lower bound.
+#' @param b A numeric value specifying the upper bound (\eqn{b > a}).
+#'
+#' @return
+#' A numeric vector of \code{n} independent random observations
+#' from the uniform distribution \eqn{U(a,b)}.
+#'
+#' @examples
+#' x <- abunif(1000, 2, 5)
+#'
+#' hist(x, probability = TRUE, col = "gray85",
+#'      main = "Uniform Distribution U(2,5)",
+#'      xlab = "X", ylab = "Sample")
+#'
+#' curve(dunif(x, min = 2, max = 5),
+#'       add = TRUE, col = "red", lwd = 2, main= "Population"
+#'       )
+#' @importFrom stats runif
+#' @export
+abunif <- function(n,a,b){
+  u <- runif(n)
+  ((b-a)*u)+a
+}
